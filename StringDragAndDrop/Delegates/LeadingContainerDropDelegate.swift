@@ -15,7 +15,7 @@ struct LeadingContainerDropDelegate: DropDelegate {
 	let id = UUID()
 	
 	func performDrop(info: DropInfo) -> Bool {
-		print("TrailingRowDropDelegate \(id.description) performDrop")
+		print("LeadingContainerDropDelegate \(id.description) performDrop")
 		
 		if let draggedItem {
 			if let leadingIndex = leadingStrings.firstIndex(of: draggedItem) {
@@ -40,7 +40,7 @@ struct LeadingContainerDropDelegate: DropDelegate {
 		guard let draggedItem = provider.first else {
 			return
 		}
-		let progress = draggedItem.loadObject(ofClass: String.self) { str, err in
+		let _ = draggedItem.loadObject(ofClass: String.self) { str, err in
 			guard let str else { return }
 			self.draggedItem = str
 			
